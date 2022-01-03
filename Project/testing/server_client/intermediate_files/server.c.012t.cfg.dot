@@ -1,0 +1,681 @@
+digraph "server.c.012t.cfg" {
+overlap=false;
+subgraph "cluster_sigint_handler" {
+	style="dashed";
+	color="black";
+	label="sigint_handler ()";
+	fn_6_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_6_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_6_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|close_database\ ();\l\
+|exit\ (0);\l\
+}"];
+
+	fn_6_basic_block_0:s -> fn_6_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_6_basic_block_0:s -> fn_6_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_login" {
+	style="dashed";
+	color="black";
+	label="login ()";
+	subgraph cluster_7_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_7_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|read\ (sd,\ &user_id,\ 4);\l\
+|user_id.0_1\ =\ user_id;\l\
+|if\ (user_id.0_1\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|read\ (sd,\ &password,\ 30);\l\
+|user_id.1_2\ =\ user_id;\l\
+|_3\ =\ check_password\ (user_id.1_2,\ &password);\l\
+|result\ =\ _3;\l\
+|write\ (sd,\ &result,\ 4);\l\
+|result.2_4\ =\ result;\l\
+|*type\ =\ result.2_4;\l\
+|result.3_5\ =\ result;\l\
+|if\ (result.3_5\ ==\ 3)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|result.4_6\ =\ result;\l\
+|if\ (result.4_6\ !=\ 0)\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|user_id\ =\ \{CLOBBER\};\l\
+|password\ =\ \{CLOBBER\};\l\
+|result\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 2\>;\ [INV]\l\
+}"];
+
+	}
+	fn_7_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_7_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_7_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4800\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|D.4800\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|D.4800\ =\ user_id;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|user_id\ =\ \{CLOBBER\};\l\
+|password\ =\ \{CLOBBER\};\l\
+|result\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_7_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L9\>:\l\
+|return\ D.4800;\l\
+}"];
+
+	fn_7_basic_block_0:s -> fn_7_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_2:s -> fn_7_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_2:s -> fn_7_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_3:s -> fn_7_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_4:s -> fn_7_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_4:s -> fn_7_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_5:s -> fn_7_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_6:s -> fn_7_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_6:s -> fn_7_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_7:s -> fn_7_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_8:s -> fn_7_basic_block_2:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_7_basic_block_9:s -> fn_7_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_10:s -> fn_7_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_0:s -> fn_7_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_customer_interface" {
+	style="dashed";
+	color="black";
+	label="customer_interface ()";
+	subgraph cluster_8_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_8_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|read\ (sd,\ &choice,\ 4);\l\
+|choice.5_1\ =\ choice;\l\
+|switch\ (choice.5_1)\ \<default:\ \<L11\>\ [INV],\ case\ 1:\ \<L1\>\ [INV],\ case\ 2\ ...\ 3:\ \<L3\>\ [INV],\ case\ 4:\ \<L6\>\ [INV],\ case\ 5:\ \<L8\>\ [INV],\ case\ 6:\ \<L10\>\ [INV]\>\l\
+}"];
+
+	fn_8_basic_block_13 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 13\>:\l\
+|\<L11\>:\l\
+|choice.7_7\ =\ choice;\l\
+|if\ (choice.7_7\ !=\ 6)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 14\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|\<L1\>:\l\
+|_2\ =\ get_balance\ (account_id);\l\
+|_3\ =\ (float)\ _2;\l\
+|balance\ =\ _3;\l\
+|write\ (sd,\ &balance,\ 4);\l\
+}"];
+
+	fn_8_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L3\>:\l\
+|read\ (sd,\ &amount,\ 4);\l\
+|amount.6_4\ =\ amount;\l\
+|_5\ =\ transaction\ (account_id,\ amount.6_4);\l\
+|ret\ =\ _5;\l\
+|write\ (sd,\ &ret,\ 4);\l\
+}"];
+
+	fn_8_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|\<L6\>:\l\
+|read\ (sd,\ &password,\ 30);\l\
+|change_password\ (user_id,\ &password);\l\
+}"];
+
+	fn_8_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L8\>:\l\
+|search\ (user_id,\ &u,\ &a);\l\
+|_6\ =\ a.account_id;\l\
+|ndx\ =\ get_account_index\ (_6);\l\
+|lock_account\ (ndx,\ -1);\l\
+|write\ (sd,\ &u.user_id,\ 4);\l\
+|write\ (sd,\ &u.name,\ 30);\l\
+|write\ (sd,\ &u.account_id,\ 4);\l\
+|write\ (sd,\ &a.number_of_users,\ 4);\l\
+|write\ (sd,\ &u.password,\ 30);\l\
+}"];
+
+	fn_8_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|\<L10\>:\l\
+|logout\ (user_id);\l\
+}"];
+
+	fn_8_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|balance\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 13\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|ret\ =\ \{CLOBBER\};\l\
+|amount\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 13\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|password\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 13\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|u\ =\ \{CLOBBER\};\l\
+|a\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 13\>;\ [INV]\l\
+}"];
+
+	}
+	fn_8_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_8_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_8_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|account_id\ =\ get_account_id\ (user_id);\l\
+}"];
+
+	fn_8_basic_block_14 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 14\>:\l\
+|choice\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_8_basic_block_0:s -> fn_8_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_2:s -> fn_8_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_13:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_12:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_4:s -> fn_8_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_5:s -> fn_8_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_6:s -> fn_8_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_7:s -> fn_8_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_8:s -> fn_8_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_9:s -> fn_8_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_10:s -> fn_8_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_11:s -> fn_8_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_12:s -> fn_8_basic_block_13:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_13:s -> fn_8_basic_block_3:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_8_basic_block_13:s -> fn_8_basic_block_14:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_14:s -> fn_8_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_0:s -> fn_8_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_create_user" {
+	style="dashed";
+	color="black";
+	label="create_user ()";
+	subgraph cluster_9_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_9_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|read\ (sd,\ &u.account_id,\ 4);\l\
+|_4\ =\ u.account_id;\l\
+|_5\ =\ attach_new_user\ (_4);\l\
+|if\ (_5\ ==\ -1)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_9_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|a\ =\ -1;\l\
+|write\ (sd,\ &a,\ 4);\l\
+|a\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_9_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	}
+	fn_9_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_9_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_9_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|__builtin_puts\ (&\"entered\ function\"[0]);\l\
+|read\ (sd,\ &u,\ 76);\l\
+|read\ (sd,\ &choice,\ 4);\l\
+|choice.8_1\ =\ choice;\l\
+|printf\ (\"%d\\n\",\ choice.8_1);\l\
+|choice.9_2\ =\ choice;\l\
+|if\ (choice.9_2\ ==\ 1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_9_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|read\ (sd,\ &a,\ 12);\l\
+|__builtin_puts\ (&\"c\"[0]);\l\
+|insert_account\ (&a);\l\
+|_3\ =\ a.account_id;\l\
+|u.account_id\ =\ _3;\l\
+|__builtin_puts\ (&\"b\"[0]);\l\
+|write\ (sd,\ &u.account_id,\ 4);\l\
+|a\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_9_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|a\ =\ 1;\l\
+|write\ (sd,\ &a,\ 4);\l\
+}"];
+
+	fn_9_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|a\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_9_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|insert_user\ (&u);\l\
+|write\ (sd,\ &u.user_id,\ 4);\l\
+|D.4819\ =\ 0;\l\
+|u\ =\ \{CLOBBER\};\l\
+|choice\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_9_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L10\>:\l\
+|return\ D.4819;\l\
+}"];
+
+	fn_9_basic_block_0:s -> fn_9_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_2:s -> fn_9_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_2:s -> fn_9_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_3:s -> fn_9_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_4:s -> fn_9_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_4:s -> fn_9_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_5:s -> fn_9_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_6:s -> fn_9_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_7:s -> fn_9_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_8:s -> fn_9_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_9_basic_block_9:s -> fn_9_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_10:s -> fn_9_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_0:s -> fn_9_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_add_admin" {
+	style="dashed";
+	color="black";
+	label="add_admin ()";
+	fn_10_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_10_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_10_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|read\ (sd,\ &u,\ 76);\l\
+|insert_user\ (&u);\l\
+|write\ (sd,\ &u.user_id,\ 4);\l\
+|u\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_10_basic_block_0:s -> fn_10_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_10_basic_block_2:s -> fn_10_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_10_basic_block_0:s -> fn_10_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_delete_user_server" {
+	style="dashed";
+	color="black";
+	label="delete_user_server ()";
+	fn_11_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_11_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_11_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|read\ (sd,\ &user_id,\ 4);\l\
+|user_id.10_1\ =\ user_id;\l\
+|_2\ =\ delete_user\ (user_id.10_1);\l\
+|result\ =\ _2;\l\
+|write\ (sd,\ &result,\ 4);\l\
+|user_id\ =\ \{CLOBBER\};\l\
+|result\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_11_basic_block_0:s -> fn_11_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_2:s -> fn_11_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_0:s -> fn_11_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_search_user" {
+	style="dashed";
+	color="black";
+	label="search_user ()";
+	fn_12_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_12_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_12_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|read\ (sd,\ &user_id,\ 4);\l\
+|user_id.11_1\ =\ user_id;\l\
+|_2\ =\ search\ (user_id.11_1,\ &u,\ &a);\l\
+|result\ =\ _2;\l\
+|write\ (sd,\ &result,\ 4);\l\
+|result.12_3\ =\ result;\l\
+|if\ (result.12_3\ !=\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|write\ (sd,\ &u,\ 76);\l\
+|write\ (sd,\ &a,\ 12);\l\
+|read\ (sd,\ &result,\ 4);\l\
+|result.13_4\ =\ result;\l\
+|D.4827\ =\ (unsigned\ int)\ result.13_4;\l\
+|D.4828\ =\ D.4827\ +\ 4294967295;\l\
+|if\ (D.4828\ \<=\ 1)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|\<L1\>:\l\
+|read\ (sd,\ &amount,\ 4);\l\
+|amount.14_5\ =\ amount;\l\
+|_6\ =\ a.account_id;\l\
+|_7\ =\ transaction\ (_6,\ amount.14_5);\l\
+|result\ =\ _7;\l\
+|write\ (sd,\ &result,\ 4);\l\
+}"];
+
+	fn_12_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|amount\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_12_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L4\>:\l\
+|_8\ =\ a.account_id;\l\
+|ndx\ =\ get_account_index\ (_8);\l\
+|lock_account\ (ndx,\ -1);\l\
+|user_id\ =\ \{CLOBBER\};\l\
+|result\ =\ \{CLOBBER\};\l\
+|u\ =\ \{CLOBBER\};\l\
+|a\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_12_basic_block_0:s -> fn_12_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_2:s -> fn_12_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_2:s -> fn_12_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_3:s -> fn_12_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_3:s -> fn_12_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_4:s -> fn_12_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_5:s -> fn_12_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_6:s -> fn_12_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_0:s -> fn_12_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_admin_interface" {
+	style="dashed";
+	color="black";
+	label="admin_interface ()";
+	subgraph cluster_13_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_13_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|__builtin_puts\ (&\"waiting\ for\ choice\"[0]);\l\
+|read\ (sd,\ &choice,\ 4);\l\
+|choice.15_1\ =\ choice;\l\
+|printf\ (\"choice\ %d\\n\",\ choice.15_1);\l\
+|choice.16_2\ =\ choice;\l\
+|switch\ (choice.16_2)\ \<default:\ \<L8\>\ [INV],\ case\ 1:\ \<L1\>\ [INV],\ case\ 2:\ \<L2\>\ [INV],\ case\ 3:\ \<L3\>\ [INV],\ case\ 4:\ \<L4\>\ [INV],\ case\ 5:\ \<L6\>\ [INV],\ case\ 6:\ \<L7\>\ [INV]\>\l\
+}"];
+
+	fn_13_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|\<L8\>:\l\
+|choice.17_3\ =\ choice;\l\
+|if\ (choice.17_3\ !=\ 6)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 12\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|\<L1\>:\l\
+|create_user\ (sd);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|\<L2\>:\l\
+|delete_user_server\ (sd);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L3\>:\l\
+|search_user\ (sd);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|\<L4\>:\l\
+|read\ (sd,\ &password,\ 30);\l\
+|change_password\ (user_id,\ &password);\l\
+}"];
+
+	fn_13_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|\<L6\>:\l\
+|add_admin\ (sd);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L7\>:\l\
+|logout\ (user_id);\l\
+}"];
+
+	fn_13_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|password\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	}
+	fn_13_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_13_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_13_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|account_id\ =\ get_account_id\ (user_id);\l\
+}"];
+
+	fn_13_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|__builtin_puts\ (&\"a\"[0]);\l\
+|choice\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_13_basic_block_0:s -> fn_13_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_2:s -> fn_13_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_11:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_4:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_5:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_6:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_7:s -> fn_13_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_8:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_9:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_10:s -> fn_13_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_11:s -> fn_13_basic_block_3:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_13_basic_block_11:s -> fn_13_basic_block_12:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_12:s -> fn_13_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_0:s -> fn_13_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_thread_function" {
+	style="dashed";
+	color="black";
+	label="thread_function ()";
+	fn_14_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_14_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_14_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|user_id\ =\ login\ (sd,\ &type);\l\
+|if\ (user_id\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|exit\ (0);\l\
+}"];
+
+	fn_14_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|type.18_1\ =\ type;\l\
+|if\ (type.18_1\ ==\ 1)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|customer_interface\ (sd,\ user_id);\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|type.19_2\ =\ type;\l\
+|if\ (type.19_2\ ==\ 2)\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|admin_interface\ (sd,\ user_id);\l\
+}"];
+
+	fn_14_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|type\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_14_basic_block_0:s -> fn_14_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_2:s -> fn_14_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_2:s -> fn_14_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_4:s -> fn_14_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_4:s -> fn_14_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_5:s -> fn_14_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_6:s -> fn_14_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_6:s -> fn_14_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_7:s -> fn_14_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_8:s -> fn_14_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_0:s -> fn_14_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	subgraph cluster_15_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_15_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|nsd\ =\ accept\ (sd,\ &client,\ &sizeof_client);\l\
+|a.nsd\ =\ nsd;\l\
+|_4\ =\ fork\ ();\l\
+|if\ (_4\ ==\ 0)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|a\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 3\>;\ [INV]\l\
+}"];
+
+	}
+	fn_15_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_15_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_15_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|sd\ =\ socket\ (2,\ 1,\ 0);\l\
+|port_number\ =\ 8000;\l\
+|server.sin_family\ =\ 2;\l\
+|server.sin_addr.s_addr\ =\ 0;\l\
+|_1\ =\ (short\ unsigned\ int)\ port_number;\l\
+|_2\ =\ (int)\ _1;\l\
+|_3\ =\ htons\ (_2);\l\
+|server.sin_port\ =\ _3;\l\
+|load_database\ ();\l\
+|signal\ (2,\ sigint_handler);\l\
+|bind\ (sd,\ &server,\ 16);\l\
+|listen\ (sd,\ 1);\l\
+|sizeof_client\ =\ 16;\l\
+}"];
+
+	fn_15_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|thread_function\ (nsd);\l\
+|exit\ (0);\l\
+}"];
+
+	fn_15_basic_block_0:s -> fn_15_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_2:s -> fn_15_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_3:s -> fn_15_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_3:s -> fn_15_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_5:s -> fn_15_basic_block_3:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_15_basic_block_0:s -> fn_15_basic_block_1:n [style="invis",constraint=true];
+}
+}

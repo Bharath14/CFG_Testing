@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ellanti/Desktop/ST/Project/src/server/database.h
+
+/home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase1.c
+database.h
+/home/ellanti/Desktop/ST/Project/src/server/database.h
+

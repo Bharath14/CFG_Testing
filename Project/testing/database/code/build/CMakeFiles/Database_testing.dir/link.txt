@@ -1,0 +1,2 @@
+/bin/ar qc libDatabase_testing.a  CMakeFiles/Database_testing.dir/database.c.o
+/bin/ranlib libDatabase_testing.a

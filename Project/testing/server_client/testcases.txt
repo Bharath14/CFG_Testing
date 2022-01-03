@@ -1,0 +1,67 @@
+Test paths with corresponding test cases for Admin_Menu_Loop:
+
+(Successive values of choice are represented by tuple. So the tuple (a,b) would mean that client first received choice = a, then in next iteration of loop received choice = b.
+)
+
+(1) [1,2,8,2,8, 2,5,8, 2,3,8, 2,4,8, 2,4,8,2,8, 9]. Test case that would execute this path is (7,7,3,1, 2,2, 6). 
+(2) [1,2,5,8, 2,7,8, 2,6,8, 2,3,8, 2,6,8, 2,7,8, 2,6,8, 2,7,8, 2,3,8, 2,5,8, 2,6,8, 2,5,8, 2,5,8, 2,3,8, 2,7,8, 2,5,8, 2,7,8, 2,5,8, 2,4,8, 2,6,8, 2,6,8, 2,4,8, 2,7,8, 2,7,8, 2,4,8, 2,4,8,2,8, 9]
+- Test case that would execute this path is (3,5, 4, 1, 4, 5,4,5, 1, 3, 4, 3, 3, 1, 5, 3, 5, 3, 2, 4,4,2,5, 5, 2, 2,6) 
+
+(3) [1,2,4,8, 2,3,8, 2,3,8, 2,4,8,9]. Test case that would execute this path is (2,1,1,2,6).
+(4) [1,2,3,8,2,8,9]. Test case that would execute this path is (1,6).
+(5) [1,2,4,8,2,8,9]. Test case that would execute this path is (2,6).
+(6) [1,2,5,8,2,8,9]. Test case that would execute this path is (3,6).
+(7) [1,2,6,8,2,8,9]. Test case that would execute this path is (4,6).
+(8) [1,2,7,8,2,8,9]. Test case that would execute this path is (5,6).
+(9) [1,2,8,9]. Test case that would execute this path is (6).
+
+
+Test paths with corresponding test cases for Search_User:
+
+(1) [1,2,16] - Test case that executes this path is (exists = -1), user does not exist.
+(2) [1,2,3,4,5,10,16] - Test case that executes this path is (exists = 0, option = 3), user exists and chooses not to change.
+(3) [1,2,3,4,5,6,7,16] - Test case that executes this path is (exists = 0, option = 1, user balance = 5000, amount = 100) (user exists and deducts amount, user balance >= amount).
+(4) [1,2,3,4,5,6,8,16] - Test case that executes this path is (exists = 0, option = 1, user balance = 4900, amount = 100) (user exists and deducts amount, user balance < amount).
+(5) [1,2,3,4,5,10,11,16] - Test case that executes this path is (exists = 0, option = 2).
+(6) [1,2,3,4, 13,4, 13,4, 5,6,7,16] - Test case that executes this path is (exists=0, option = 5, option = 6, option = 1, user balance = 5000, amount = 100) (user balance >= amount).
+(7) [1,2,3,4, 13,4, 5,6,8,16] - Test case that executes this path is (exists = 0, option = 5, option = 1, user balance = 50, amount = 100) (user balance < amount).
+(8) [1,2,3,4, 13,4,5,10,16] - Test case that executes this path is (exists = 0, option = 5, option = 3).
+(9) [1,2,3,4, 13,4,5, 10,11,16] - Test case that executes this path is (exists = 0, option = 5, option = 2).
+
+Test paths with corresponding test cases for Add_User:
+
+(1) [1,2,3,4,14] - Test path that executes this is (Choice = 1) (Add New account).
+(2) [1,2,3,6,7,8,12,14] - Test path that executes this is (choice = 2, result = 0) (Share Existing Account, Account exists).
+(3) [1,2, 3,6,13,3,6, 7,8,12, 14] - Test path that executes this is (choice = 3, choice = 2, result = 0) (Invalid Option, Share Existing Account, Account exists).
+(4) [1,2, 3,6,13,3,6, 7,8,9,8,12, 14] - Test path that executes this is (choice = 3, choice = 2, result = -1, result = 0) (Invalid Option, Share Existing Account, Invalid Account number entered, Account exists).
+(5) [1,2,3,6, 13,3,6, 13,3,4,14] - Test path that executes this is (choice = 3, choice = 3, choice = 1) (Invalid Option, Invalid Option, Add New Account).
+(6) [1,2,3,6,7,8,9,8,9,8,12,14] - Test path that executes this is  (choice = 2, result = -1, result = -1, result = 0) (Share Existing Account, Invalid Account Number entered, Invalid Account Number entered, Account exists).
+
+Test paths with corresponding test cases for Login:
+
+(1) [1,2,3,4,16] - Test case for this is (matching username-password pair for an offline and regular user).
+(2) [1,2,3,5,6,16] - Test case for this is (matching username-password pair for an offline admin user).
+(3) [1,2,3, 5,7,9,11, 12, 13,15] - Test case for this is (User exists but wrong password is entered and exits without trying again).
+(4) [1,2,3, 5,7,9,10, 13,15] - Test case for this is (User with entered user ID does not exist in database and exits without trying again).
+(5) [1,2,3, 5,7,9,11,12, 13, 3,5,6,16] - Test case for this is (Offline admin user exists with entered ID but wrong password is entered, tries again and then enters correct password).
+(6) [1,2,3, 5,7,9,11,12, 13,3,4,16] - Test case for this is (Offline regular user exists with entered ID but wrong password is entered, tries again and then enters correct password).
+(7) [1,2,3, 5,7,9,10, 13,3,4,16] - Test case for this is (User with entered user ID does not exist in database, tries again and logs in successfully as offline regular user).
+(8) [1,2,3, 5,7,9,10, 13,3,5,6,16] - Test case for this is (User with entered user ID does not exist in database, tries again and logs in successfully as offline admin user). 
+(9) [1,2,3, 5,7,8, 13,15] - Test case for this is (User is already online, and exits without trying again). 
+
+(10) [1,2,3, 5,7,9,11,12, 13, 3,5,7,9,11,12,13,15] - Test case for this is (User exists but wrong password is entered, so tries again, enters wrong password again, then exits without trying further)
+(11) [1,2,3, 5,7,9,11,12, 13, 3,5,7,9,10,13,15] - Test case for this is (User exists but wrong password is entered, then tries again but enters wrong user ID, then exits without trying again).
+(12) [1,2,3, 5,7,8,13, 3,5,7,9,11,12,13,15] - Test case for this is (User exists but is online already, so tries login again but enters wrong password, then exits without trying again).
+(13) [1,2,3, 5,7,9,10, 13,3,5,7,9,11,12,13, 15] - Test case for this is (User with entered user ID does not exist in database, so tries again but enters wrong password, then exits without trying again).
+(14) [1,2,3, 5,7,9,11,12, 13, 3,5,7,8,13,15] - Test case for this is (User exists but wrong password is entered, then tries again but it shows that user is already online, then exits without trying again).
+(15) [1,2,3, 5,7,8, 13, 3,4,16] - Test case for this is (Regular user exists but is already online, then tries again and then enters correct user ID-password pair to log in as the other had become offline).
+(16) [1,2,3, 5,7,9,10, 13, 3,5,7,8,13,15] - Test case for this is (User with entered user ID does not exist in database, then tries again but user is already online so exits without trying again).
+(17) [1,2,3, 5,7,8, 13, 3,5,6,16] - Test case for this is (Admin user exists but it is already online, then tries again and then enters correct user ID-password pair to log in).
+(18) [1,2,3, 5,7,8, 13, 3,5, 7,9,10,13,15] - Test case for this is (User is online, then tries again and enters wrong user ID, exits without trying again).
+(19) [1,2,3, 5,7,9,10, 13, 3,5,7,9,10, 13,15] - Test case for this is (User with entered user ID does not exist in database, so tries again but again wrong user ID entered, so exits without trying again).
+(20) [1,2,3, 5,7,8, 13, 3,5,7,8, 13,15] - Test case for this is (User is online, then tries again but user is still online, so exits without trying again).
+
+
+Failures - These flaws were not known at time of coding up the project, hence prime path coverage helped us find such errors.
+
+In login - Test cases 7,8, 13,15, 16,17,18, 19,20   fail.

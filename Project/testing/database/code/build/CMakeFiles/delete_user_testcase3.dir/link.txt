@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-gcc-9 -g  -rdynamic CMakeFiles/delete_user_testcase3.dir/delete_user_testcase3.c.o CMakeFiles/delete_user_testcase3.dir/database.c.o  -o delete_user_testcase3 

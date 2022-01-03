@@ -1,0 +1,19 @@
+Start testing: Nov 26 18:45 IST
+----------------------------------------------------------
+Unable to find executable: insert_account_testcase1
+1/1 Testing: Tester1
+1/1 Test: Tester1
+Command: ""
+Directory: /home/ellanti/Desktop/ST/Project/src/server
+"Tester1" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Tester1" end time: Nov 26 18:45 IST
+"Tester1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 26 18:45 IST

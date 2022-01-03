@@ -1,0 +1,173 @@
+InsertAccount()
+
+    Primepaths
+
+    1. [1,2,6,3,4,7,9,10]
+    2. [1,2,6,3,4,7,8,10]
+    3. [5,6,3,4,7,8,10]
+    4. [5,6,3,4,7,9,10]
+    5. [1,2,6,7,8,10]
+    6. [1,2,6,7,9,10]
+    7. [3,5,6,7,8,10]
+    8. [3,5,6,7,9,10]
+    9. [1,2,6,3,5]
+    10. [6,3,5,6]
+    11. [3,5,6,3]
+    12. [5,6,3,5]
+
+Test Paths	                                            Test Requirements that are toured by test paths directly                                Testcases
+[1,2,6,3,4,7,9,10]	                                    [1,2,6,3,4,7,9,10]                                                                          first account inserted
+[1,2,6,3,4,7,8,10]	                                     [1,2,6,3,4,7,8,10]                                                                         Infeasible
+[1,2,6,3,5,6,3,4,7,8,10]	                             [5,6,3,4,7,8,10], [1,2,6,3,5], [6,3,5,6], [3,5,6,3]                                         Infeasible
+[1,2,6,3,5,6,3,4,7,9,10]	                             [5,6,3,4,7,9,10], [1,2,6,3,5], [6,3,5,6], [3,5,6,3]                                        Second account inserted
+[1,2,6,7,8,10]	                                        [1,2,6,7,8,10]                                                                              Account limit 0
+[1,2,6,7,9,10]	                                        [1,2,6,7,9,10]                                                                              Infeasible
+[1,2,6,3,5,6,7,8,10]	                                [3,5,6,7,8,10], [1,2,6,3,5], [6,3,5,6]                                                      Account limit 1 with no insertion 
+[1,2,6,3,5,6,3,5,6,7,9,10]	                            [3,5,6,7,9,10], [1,2,6,3,5], [6,3,5,6], [3,5,6,3], [5,6,3,5]                                Infeasible
+
+Test Paths	                                            Test Requirements that are toured by test paths with sidetrips
+[1,2,6,3,4,7,9,10]	                                    None
+[1,2,6,3,4,7,8,10]	                                    None
+[1,2,6,3,5,6,3,4,7,8,10]	                            [1,2,6,3,4,7,8,10]
+[1,2,6,3,5,6,3,4,7,9,10]	                            [1,2,6,3,4,7,9,10]
+[1,2,6,7,8,10]	                                        None
+[1,2,6,7,9,10]	                                        None
+[1,2,6,3,5,6,7,8,10]	                                [1,2,6,7,8,10]
+[1,2,6,3,5,6,3,5,6,7,9,10]	                            [3,5,6,7,9,10], [1,2,6,3,5], [6,3,5,6]
+
+
+GetAccountIndex()
+
+    Primepaths
+
+    1. [1,2,6,3,4,8]
+    2. [1,2,6,7,8]
+    3. [1,2,6,3,5]
+    4. [5,6,3,4,8]
+    5. [3,5,6,7,8]
+    6. [6,3,5,6]
+    7. [5,6,3,5]
+    8. [3,5,6,3]
+
+
+Test Paths	                                        Test Requirements that are toured by test paths directly                                TestCases
+[1,2,6,3,4,8]	                                        [1,2,6,3,4,8]                                                                       Account id of First account
+[1,2,6,7,8]	                                            [1,2,6,7,8]                                                                         Account limit 0
+[1,2,6,3,5,6,3,4,8]	                                    [1,2,6,3,5], [5,6,3,4,8], [6,3,5,6], [3,5,6,3]                                      Account id of Second account
+[1,2,6,3,5,6,3,5,6,7,8]	                                [1,2,6,3,5], [3,5,6,7,8], [6,3,5,6], [5,6,3,5], [3,5,6,3]                           Account limit 2 with accountid not present in db
+
+Test Paths	                                            Test Requirements that are toured by test paths with sidetrips
+[1,2,6,3,4,8]	                                        None
+[1,2,6,7,8]	                                            None
+[1,2,6,3,5,6,3,4,8]	                                    [1,2,6,3,4,8]
+[1,2,6,3,5,6,3,5,6,7,8]	                                [1,2,6,3,5], [3,5,6,7,8], [6,3,5,6]
+
+
+LockAccount()
+
+        Primepaths
+
+        1. [1,2,4,6,7,8,9,11]
+        2. [1,2,4,6,7,8,10,11]
+        3. [1,2,4,6,8,9,11]
+        4. [1,2,4,6,8,10,11]
+        5. [1,2,4,5,8,9,11]
+        6. [1,2,4,5,8,10,11]
+        7. [1,2,3,8,9,11]
+        8. [1,2,3,8,10,11]
+
+Test Paths	                                            Test Requirements that are toured by test paths directly                            TestCases
+[1,2,4,6,7,8,9,11]	                                    [1,2,4,6,7,8,9,11]                                                                   type = -1
+[1,2,4,6,7,8,10,11]	                                    [1,2,4,6,7,8,10,11]                                                                   Infeasible
+[1,2,4,5,8,10,11]	                                    [1,2,4,5,8,10,11]                                                                      type = 1
+[1,2,4,5,8,9,11]	                                    [1,2,4,5,8,9,11]                                                                        Infeasible
+[1,2,4,6,8,9,11]	                                    [1,2,4,6,8,9,11]                                                                        Infeasible
+[1,2,4,6,8,10,11]	                                    [1,2,4,6,8,10,11]                                                                       type not equal to 0,1,-1
+[1,2,3,8,9,11]	                                        [1,2,3,8,9,11]                                                                           Infeasible
+[1,2,3,8,10,11]	                                        [1,2,3,8,10,11]                                                                          type = 0
+
+Test Paths	                                            Test Requirements that are toured by test paths with sidetrips
+[1,2,4,6,7,8,9,11]	                                    None
+[1,2,4,6,7,8,10,11]	                                    None
+[1,2,4,5,8,10,11]	                                    None
+[1,2,4,5,8,9,11]	                                    None
+[1,2,4,6,8,9,11]	                                    None
+[1,2,4,6,8,10,11]	                                    None
+[1,2,3,8,9,11]	                                        None
+[1,2,3,8,10,11]	                                        None
+
+
+DeleteUser()
+
+        Primepaths
+
+        1. [1,2,4,5,7,8]
+        2. [1,2,4,6,7,8]
+        3. [1,2,3,8]
+
+Test Paths	                                            Test Requirements that are toured by test paths directly                        TestCases
+[1,2,4,5,7,8]	                                        [1,2,4,5,7,8]                                                                   User present in list, number of users>1
+[1,2,4,6,7,8]	                                        [1,2,4,6,7,8]                                                                   User present in list, number of users<=1
+[1,2,3,8]	                                            [1,2,3,8]                                                                       User not present in list.
+
+Test Paths                                          	Test Requirements that are toured by test paths with sidetrips
+[1,2,4,5,7,8]	                                        None
+[1,2,4,6,7,8]	                                        None
+[1,2,3,8]                       	                    None
+
+
+Transaction()
+
+            Primepaths
+
+            1. [1,2,4,5,8]
+            2. [1,2,4,6,8]
+            3. [1,2,3,8]
+
+Test Paths                                               Test Requirements that are toured by test paths directly                       Testcases
+[1,2,4,5,8]                                              [1,2,4,5,8]                                                                    amount with drawn should be in limits
+[1,2,4,6,8]                                              [1,2,4,6,8]                                                                    amount with drawn should be out of range
+[1,2,3,8]                                                [1,2,3,8]                                                                      account id not found
+
+Test Paths                                               Test Requirements that are toured by test paths with sidetrips
+[1,2,4,5,8]                                              None
+[1,2,4,6,8]                                              None
+[1,2,3,8]                                                   None
+
+
+CheckPassword()
+
+            Primepaths
+
+            1.[1,2,4,5,7,8,12]
+            2.[1,2,4,5,7,9,12]
+            3.[1,2,4,5,6,12]
+            4.[1,2,4,10,12]
+            5.[1,2,3,12]
+
+Test Paths                                               Test Requirements that are toured by test paths directly                   TestCases      
+[1,2,4,5,7,8,12]                                         [1,2,4,5,7,8,12]                                                           user must present in the list, password matched, not online, u.type = A
+[1,2,4,5,7,9,12]                                          [1,2,4,5,7,9,12]                                                          user must present in the list, password matched, not online, u.type != A
+[1,2,4,5,6,12]                                            [1,2,4,5,6,12]                                                            user must present in the list, password matched, online  
+[1,2,4,10,12]                                              [1,2,4,10,12]                                                            user must present in the list, password not matched
+[1,2,3,12]                                                  [1,2,3,12]                                                              user not present in the list
+
+Test Paths                                               Test Requirements that are toured by test paths with sidetrips 
+[1,2,4,5,7,8,12]                                         None   
+[1,2,4,5,7,9,12]                                          None
+[1,2,4,5,6,12]                                            None 
+[1,2,4,10,12]                                            None
+[1,2,3,12]                                            None
+
+
+
+
+
+
+
+
+
+
+
+
+

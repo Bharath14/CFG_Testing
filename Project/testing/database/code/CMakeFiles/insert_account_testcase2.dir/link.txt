@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/insert_account_testcase2.dir/insert_account_testcase2.c.o CMakeFiles/insert_account_testcase2.dir/database.c.o  -o insert_account_testcase2 

@@ -1,0 +1,1597 @@
+digraph "database.c.012t.cfg" {
+overlap=false;
+subgraph "cluster_create_database" {
+	style="dashed";
+	color="black";
+	label="create_database ()";
+	fn_6_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_6_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_6_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|mkdir\ (\"./database\",\ 484);\l\
+|u.user_id\ =\ 0;\l\
+|u.type\ =\ 65;\l\
+|__builtin_memcpy\ (&u.name,\ \"Super\ User\",\ 11);\l\
+|__builtin_memcpy\ (&u.password,\ \"qwerty\",\ 7);\l\
+|u.online\ =\ 0;\l\
+|fd\ =\ open\ (\"./database/user.dat\",\ 65,\ 484);\l\
+|write\ (fd,\ &u,\ 76);\l\
+|close\ (fd);\l\
+|i\ =\ *.LC0;\l\
+|i[0]\ =\ 0;\l\
+|fd\ =\ open\ (\"./database/user.ndx\",\ 65,\ 484);\l\
+|write\ (fd,\ &i,\ 400);\l\
+|write\ (fd,\ 0B,\ 4);\l\
+|close\ (fd);\l\
+|fd\ =\ open\ (\"./database/account.dat\",\ 64,\ 484);\l\
+|close\ (fd);\l\
+|j\ =\ *.LC0;\l\
+|fd\ =\ open\ (\"./database/account.ndx\",\ 65,\ 484);\l\
+|write\ (fd,\ &j,\ 400);\l\
+|write\ (fd,\ 0B,\ 4);\l\
+|close\ (fd);\l\
+|u\ =\ \{CLOBBER\};\l\
+|i\ =\ \{CLOBBER\};\l\
+|j\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_6_basic_block_0:s -> fn_6_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_6_basic_block_2:s -> fn_6_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_6_basic_block_0:s -> fn_6_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_load_database" {
+	style="dashed";
+	color="black";
+	label="load_database ()";
+	subgraph cluster_7_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_7_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|if\ (i\ \<=\ 3)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|semctl\ (semid,\ i,\ 16,\ semun);\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_7_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_7_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_7_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|shmkey\ =\ ftok\ (\".\",\ 109);\l\
+|_1\ =\ shmget\ (shmkey,\ 820,\ 996);\l\
+|shmid\ =\ _1;\l\
+|shmid.0_2\ =\ shmid;\l\
+|_3\ =\ shmat\ (shmid.0_2,\ 0B,\ 0);\l\
+|db_info\ =\ _3;\l\
+|fd\ =\ open\ (\"./database/user.ndx\",\ 0);\l\
+|db_info.1_4\ =\ db_info;\l\
+|_5\ =\ &db_info.1_4-\>user_index;\l\
+|read\ (fd,\ _5,\ 400);\l\
+|db_info.2_6\ =\ db_info;\l\
+|_7\ =\ &db_info.2_6-\>max_user_id;\l\
+|read\ (fd,\ _7,\ 4);\l\
+|close\ (fd);\l\
+|fd\ =\ open\ (\"./database/account.ndx\",\ 0);\l\
+|db_info.3_8\ =\ db_info;\l\
+|_9\ =\ &db_info.3_8-\>account_index;\l\
+|read\ (fd,\ _9,\ 400);\l\
+|db_info.4_10\ =\ db_info;\l\
+|_11\ =\ &db_info.4_10-\>max_account_id;\l\
+|read\ (fd,\ _11,\ 4);\l\
+|close\ (fd);\l\
+|db_info.5_12\ =\ db_info;\l\
+|_13\ =\ open\ (\"./database/account.dat\",\ 2);\l\
+|db_info.5_12-\>account_fd\ =\ _13;\l\
+|db_info.6_14\ =\ db_info;\l\
+|_15\ =\ open\ (\"./database/user.dat\",\ 2);\l\
+|db_info.6_14-\>user_fd\ =\ _15;\l\
+|key\ =\ ftok\ (\".\",\ 97);\l\
+|semid\ =\ semget\ (key,\ 4,\ 996);\l\
+|semun.val\ =\ 1;\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_7_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|db_info.7_16\ =\ db_info;\l\
+|db_info.7_16-\>sem_id\ =\ semid;\l\
+|semun\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_7_basic_block_0:s -> fn_7_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_2:s -> fn_7_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_7_basic_block_3:s -> fn_7_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_7_basic_block_4:s -> fn_7_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_4:s -> fn_7_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_5:s -> fn_7_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_7_basic_block_0:s -> fn_7_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_close_database" {
+	style="dashed";
+	color="black";
+	label="close_database ()";
+	subgraph cluster_8_2 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 2";
+	labeljust=l;
+	penwidth=2;
+	fn_8_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|if\ (i\ \<=\ 3)\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|semctl\ (semid,\ i,\ 0,\ semun);\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	subgraph cluster_8_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_8_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|db_info.15_15\ =\ db_info;\l\
+|_16\ =\ db_info.15_15-\>user_fd;\l\
+|_17\ =\ read\ (_16,\ &u,\ 76);\l\
+|if\ (_17\ !=\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|u.online\ =\ 0;\l\
+|db_info.13_11\ =\ db_info;\l\
+|_12\ =\ db_info.13_11-\>user_fd;\l\
+|lseek\ (_12,\ -76,\ 1);\l\
+|db_info.14_13\ =\ db_info;\l\
+|_14\ =\ db_info.14_13-\>user_fd;\l\
+|write\ (_14,\ &u,\ 76);\l\
+}"];
+
+	}
+	fn_8_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_8_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_8_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|fd\ =\ open\ (\"./database/user.ndx\",\ 513);\l\
+|db_info.8_1\ =\ db_info;\l\
+|_2\ =\ &db_info.8_1-\>user_index;\l\
+|write\ (fd,\ _2,\ 400);\l\
+|db_info.9_3\ =\ db_info;\l\
+|_4\ =\ &db_info.9_3-\>max_user_id;\l\
+|write\ (fd,\ _4,\ 4);\l\
+|close\ (fd);\l\
+|fd\ =\ open\ (\"./database/account.ndx\",\ 513);\l\
+|db_info.10_5\ =\ db_info;\l\
+|_6\ =\ &db_info.10_5-\>account_index;\l\
+|write\ (fd,\ _6,\ 400);\l\
+|db_info.11_7\ =\ db_info;\l\
+|_8\ =\ &db_info.11_7-\>max_account_id;\l\
+|write\ (fd,\ _8,\ 4);\l\
+|close\ (fd);\l\
+|sem_lock\ (1);\l\
+|db_info.12_9\ =\ db_info;\l\
+|_10\ =\ db_info.12_9-\>user_fd;\l\
+|lseek\ (_10,\ 0,\ 0);\l\
+goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|key\ =\ ftok\ (\".\",\ 97);\l\
+|semid\ =\ semget\ (key,\ 4,\ 0);\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_8_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|db_info.16_18\ =\ db_info;\l\
+|_19\ =\ db_info.16_18-\>account_fd;\l\
+|close\ (_19);\l\
+|db_info.17_20\ =\ db_info;\l\
+|_21\ =\ db_info.17_20-\>user_fd;\l\
+|close\ (_21);\l\
+|db_info.18_22\ =\ db_info;\l\
+|shmdt\ (db_info.18_22);\l\
+|shmid.19_23\ =\ shmid;\l\
+|shmctl\ (shmid.19_23,\ 0,\ 0B);\l\
+|u\ =\ \{CLOBBER\};\l\
+|semun\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_8_basic_block_0:s -> fn_8_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_2:s -> fn_8_basic_block_4:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_3:s -> fn_8_basic_block_4:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_8_basic_block_4:s -> fn_8_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_4:s -> fn_8_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_5:s -> fn_8_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_8_basic_block_6:s -> fn_8_basic_block_7:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_8_basic_block_7:s -> fn_8_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_7:s -> fn_8_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_8:s -> fn_8_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_8_basic_block_0:s -> fn_8_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_sem_lock" {
+	style="dashed";
+	color="black";
+	label="sem_lock ()";
+	fn_9_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_9_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_9_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|_1\ =\ (short\ unsigned\ int)\ i;\l\
+|buf.sem_num\ =\ _1;\l\
+|buf.sem_op\ =\ -1;\l\
+|buf.sem_flg\ =\ 0;\l\
+|db_info.20_2\ =\ db_info;\l\
+|_3\ =\ db_info.20_2-\>sem_id;\l\
+|semop\ (_3,\ &buf,\ 1);\l\
+|buf\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_9_basic_block_0:s -> fn_9_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_9_basic_block_2:s -> fn_9_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_9_basic_block_0:s -> fn_9_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_sem_unlock" {
+	style="dashed";
+	color="black";
+	label="sem_unlock ()";
+	fn_10_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_10_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_10_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|_1\ =\ (short\ unsigned\ int)\ i;\l\
+|buf.sem_num\ =\ _1;\l\
+|buf.sem_op\ =\ 1;\l\
+|buf.sem_flg\ =\ 0;\l\
+|db_info.21_2\ =\ db_info;\l\
+|_3\ =\ db_info.21_2-\>sem_id;\l\
+|semop\ (_3,\ &buf,\ 1);\l\
+|buf\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_10_basic_block_0:s -> fn_10_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_10_basic_block_2:s -> fn_10_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_10_basic_block_0:s -> fn_10_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_insert_user" {
+	style="dashed";
+	color="black";
+	label="insert_user ()";
+	subgraph cluster_11_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_11_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (i\ \<=\ 99)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|db_info.23_5\ =\ db_info;\l\
+|_6\ =\ db_info.23_5-\>user_index[i];\l\
+|if\ (_6\ ==\ -1)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_11_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_11_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_11_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|offset\ =\ -1;\l\
+|sem_lock\ (0);\l\
+|db_info.22_1\ =\ db_info;\l\
+|_2\ =\ db_info.22_1-\>max_user_id;\l\
+|_3\ =\ _2\ +\ 1;\l\
+|db_info.22_1-\>max_user_id\ =\ _3;\l\
+|_4\ =\ db_info.22_1-\>max_user_id;\l\
+|u-\>user_id\ =\ _4;\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_7\ =\ (long\ unsigned\ int)\ i;\l\
+|_8\ =\ (unsigned\ int)\ _7;\l\
+|_9\ =\ _8\ *\ 76;\l\
+|offset\ =\ (int)\ _9;\l\
+|db_info.24_10\ =\ db_info;\l\
+|_11\ =\ u-\>user_id;\l\
+|db_info.24_10-\>user_index[i]\ =\ _11;\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|sem_unlock\ (0);\l\
+|if\ (offset\ ==\ -1)\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|D.4078\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 10\>;\ [INV]\l\
+}"];
+
+	fn_11_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|sem_lock\ (1);\l\
+|_12\ =\ (long\ int)\ offset;\l\
+|db_info.25_13\ =\ db_info;\l\
+|_14\ =\ db_info.25_13-\>user_fd;\l\
+|lseek\ (_14,\ _12,\ 0);\l\
+|db_info.26_15\ =\ db_info;\l\
+|_16\ =\ db_info.26_15-\>user_fd;\l\
+|write\ (_16,\ u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|D.4078\ =\ u-\>user_id;\l\
+}"];
+
+	fn_11_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L7\>:\l\
+|return\ D.4078;\l\
+}"];
+
+	fn_11_basic_block_0:s -> fn_11_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_2:s -> fn_11_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_3:s -> fn_11_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_3:s -> fn_11_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_4:s -> fn_11_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_5:s -> fn_11_basic_block_6:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_11_basic_block_6:s -> fn_11_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_6:s -> fn_11_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_7:s -> fn_11_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_7:s -> fn_11_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_8:s -> fn_11_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_9:s -> fn_11_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_11_basic_block_10:s -> fn_11_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_11_basic_block_0:s -> fn_11_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_insert_account" {
+	style="dashed";
+	color="black";
+	label="insert_account ()";
+	subgraph cluster_12_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_12_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (i\ \<=\ 99)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|db_info.28_5\ =\ db_info;\l\
+|_6\ =\ db_info.28_5-\>account_index[i];\l\
+|if\ (_6\ ==\ -1)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_12_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_12_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_12_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|offset\ =\ -1;\l\
+|sem_lock\ (3);\l\
+|db_info.27_1\ =\ db_info;\l\
+|_2\ =\ db_info.27_1-\>max_account_id;\l\
+|_3\ =\ _2\ +\ 1;\l\
+|db_info.27_1-\>max_account_id\ =\ _3;\l\
+|_4\ =\ db_info.27_1-\>max_account_id;\l\
+|a-\>account_id\ =\ _4;\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_7\ =\ (long\ unsigned\ int)\ i;\l\
+|_8\ =\ (unsigned\ int)\ _7;\l\
+|_9\ =\ _8\ *\ 12;\l\
+|offset\ =\ (int)\ _9;\l\
+|db_info.29_10\ =\ db_info;\l\
+|_11\ =\ a-\>account_id;\l\
+|db_info.29_10-\>account_index[i]\ =\ _11;\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|sem_unlock\ (3);\l\
+|if\ (offset\ ==\ -1)\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|D.4084\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 10\>;\ [INV]\l\
+}"];
+
+	fn_12_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|sem_lock\ (4);\l\
+|_12\ =\ (long\ int)\ offset;\l\
+|db_info.30_13\ =\ db_info;\l\
+|_14\ =\ db_info.30_13-\>account_fd;\l\
+|lseek\ (_14,\ _12,\ 0);\l\
+|db_info.31_15\ =\ db_info;\l\
+|_16\ =\ db_info.31_15-\>account_fd;\l\
+|write\ (_16,\ a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|D.4084\ =\ 0;\l\
+}"];
+
+	fn_12_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|\<L7\>:\l\
+|return\ D.4084;\l\
+}"];
+
+	fn_12_basic_block_0:s -> fn_12_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_2:s -> fn_12_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_3:s -> fn_12_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_3:s -> fn_12_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_4:s -> fn_12_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_5:s -> fn_12_basic_block_6:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_12_basic_block_6:s -> fn_12_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_6:s -> fn_12_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_7:s -> fn_12_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_7:s -> fn_12_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_8:s -> fn_12_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_9:s -> fn_12_basic_block_10:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_12_basic_block_10:s -> fn_12_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_12_basic_block_0:s -> fn_12_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_get_account_index" {
+	style="dashed";
+	color="black";
+	label="get_account_index ()";
+	subgraph cluster_13_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_13_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (i\ \<=\ 99)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|db_info.32_1\ =\ db_info;\l\
+|_2\ =\ db_info.32_1-\>account_index[i];\l\
+|printf\ (\"%d\ \",\ _2);\l\
+|db_info.33_3\ =\ db_info;\l\
+|_4\ =\ db_info.33_3-\>account_index[i];\l\
+|if\ (account_id\ ==\ _4)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_13_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_13_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_13_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|sem_lock\ (3);\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|sem_unlock\ (3);\l\
+|D.4088\ =\ i;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_13_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|sem_unlock\ (3);\l\
+|D.4088\ =\ -1;\l\
+}"];
+
+	fn_13_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|\<L5\>:\l\
+|return\ D.4088;\l\
+}"];
+
+	fn_13_basic_block_0:s -> fn_13_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_2:s -> fn_13_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_3:s -> fn_13_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_4:s -> fn_13_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_5:s -> fn_13_basic_block_6:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_13_basic_block_6:s -> fn_13_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_6:s -> fn_13_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_7:s -> fn_13_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_13_basic_block_8:s -> fn_13_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_13_basic_block_0:s -> fn_13_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_get_user_index" {
+	style="dashed";
+	color="black";
+	label="get_user_index ()";
+	subgraph cluster_14_1 {
+	style="filled";
+	color="darkgreen";
+	fillcolor="grey88";
+	label="loop 1";
+	labeljust=l;
+	penwidth=2;
+	fn_14_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (i\ \<=\ 99)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|db_info.34_1\ =\ db_info;\l\
+|_2\ =\ db_info.34_1-\>user_index[i];\l\
+|if\ (user_id\ ==\ _2)\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|i\ =\ i\ +\ 1;\l\
+}"];
+
+	}
+	fn_14_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_14_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_14_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|sem_lock\ (0);\l\
+|i\ =\ 0;\l\
+goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|sem_unlock\ (0);\l\
+|D.4092\ =\ i;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_14_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|sem_unlock\ (0);\l\
+|D.4092\ =\ -1;\l\
+}"];
+
+	fn_14_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|\<L5\>:\l\
+|return\ D.4092;\l\
+}"];
+
+	fn_14_basic_block_0:s -> fn_14_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_2:s -> fn_14_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_3:s -> fn_14_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_3:s -> fn_14_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_4:s -> fn_14_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_5:s -> fn_14_basic_block_6:n [style="dotted,bold",color=blue,weight=10,constraint=false];
+	fn_14_basic_block_6:s -> fn_14_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_6:s -> fn_14_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_7:s -> fn_14_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_14_basic_block_8:s -> fn_14_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_14_basic_block_0:s -> fn_14_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_lock_account" {
+	style="dashed";
+	color="black";
+	label="lock_account ()";
+	fn_15_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_15_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_15_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 12;\l\
+|offset\ =\ (int)\ _3;\l\
+|if\ (type\ ==\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|l1.l_type\ =\ 0;\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|if\ (type\ ==\ 1)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|l1.l_type\ =\ 1;\l\
+|__builtin_puts\ (&\"writeLocked\"[0]);\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (type\ ==\ -1)\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|l1.l_type\ =\ 2;\l\
+|__builtin_puts\ (&\"unlocked\"[0]);\l\
+}"];
+
+	fn_15_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|l1.l_whence\ =\ 0;\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|l1.l_start\ =\ _4;\l\
+|l1.l_len\ =\ 12;\l\
+|_5\ =\ getpid\ ();\l\
+|l1.l_pid\ =\ _5;\l\
+|if\ (type\ ==\ -1)\l\
+\ \ goto\ \<bb\ 9\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 10\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|db_info.35_6\ =\ db_info;\l\
+|_7\ =\ db_info.35_6-\>account_fd;\l\
+|fcntl\ (_7,\ 6,\ &l1);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_15_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|db_info.36_8\ =\ db_info;\l\
+|_9\ =\ db_info.36_8-\>account_fd;\l\
+|i\ =\ fcntl\ (_9,\ 7,\ &l1);\l\
+|_10\ =\ l1.l_len;\l\
+|printf\ (\"i\ %d\ %ld\\n\",\ offset,\ _10);\l\
+|perror\ (\"fcntl\");\l\
+}"];
+
+	fn_15_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|D.4105\ =\ 0;\l\
+|l1\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_15_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|\<L12\>:\l\
+|return\ D.4105;\l\
+}"];
+
+	fn_15_basic_block_0:s -> fn_15_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_2:s -> fn_15_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_2:s -> fn_15_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_3:s -> fn_15_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_4:s -> fn_15_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_4:s -> fn_15_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_5:s -> fn_15_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_6:s -> fn_15_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_6:s -> fn_15_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_7:s -> fn_15_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_8:s -> fn_15_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_8:s -> fn_15_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_9:s -> fn_15_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_10:s -> fn_15_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_11:s -> fn_15_basic_block_12:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_15_basic_block_12:s -> fn_15_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_15_basic_block_0:s -> fn_15_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_lock_user" {
+	style="dashed";
+	color="black";
+	label="lock_user ()";
+	fn_16_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_16_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_16_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|if\ (type\ ==\ 0)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|l1.l_type\ =\ 0;\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|if\ (type\ ==\ 1)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|l1.l_type\ =\ 1;\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|if\ (type\ ==\ -1)\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|l1.l_type\ =\ 2;\l\
+}"];
+
+	fn_16_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|l1.l_whence\ =\ 0;\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|l1.l_start\ =\ _4;\l\
+|l1.l_len\ =\ 76;\l\
+|_5\ =\ getpid\ ();\l\
+|l1.l_pid\ =\ _5;\l\
+|if\ (type\ ==\ -1)\l\
+\ \ goto\ \<bb\ 9\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 10\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|db_info.37_6\ =\ db_info;\l\
+|_7\ =\ db_info.37_6-\>user_fd;\l\
+|fcntl\ (_7,\ 6,\ &l1);\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_16_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|db_info.38_8\ =\ db_info;\l\
+|_9\ =\ db_info.38_8-\>user_fd;\l\
+|fcntl\ (_9,\ 7,\ &l1);\l\
+}"];
+
+	fn_16_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|l1\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_16_basic_block_0:s -> fn_16_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_2:s -> fn_16_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_2:s -> fn_16_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_3:s -> fn_16_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_4:s -> fn_16_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_4:s -> fn_16_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_5:s -> fn_16_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_6:s -> fn_16_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_6:s -> fn_16_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_7:s -> fn_16_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_8:s -> fn_16_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_8:s -> fn_16_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_9:s -> fn_16_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_10:s -> fn_16_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_16_basic_block_11:s -> fn_16_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_16_basic_block_0:s -> fn_16_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_delete_user" {
+	style="dashed";
+	color="black";
+	label="delete_user ()";
+	fn_17_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_17_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_17_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_17_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4121\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 8\>;\ [INV]\l\
+}"];
+
+	fn_17_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|sem_lock\ (0);\l\
+|db_info.39_1\ =\ db_info;\l\
+|db_info.39_1-\>user_index[ndx]\ =\ -1;\l\
+|sem_unlock\ (0);\l\
+|_2\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_3\ =\ (unsigned\ int)\ _2;\l\
+|_4\ =\ _3\ *\ 76;\l\
+|offset\ =\ (int)\ _4;\l\
+|lock_user\ (ndx,\ 1);\l\
+|sem_lock\ (1);\l\
+|_5\ =\ (long\ int)\ offset;\l\
+|db_info.40_6\ =\ db_info;\l\
+|_7\ =\ db_info.40_6-\>user_fd;\l\
+|lseek\ (_7,\ _5,\ 0);\l\
+|db_info.41_8\ =\ db_info;\l\
+|_9\ =\ db_info.41_8-\>user_fd;\l\
+|read\ (_9,\ &u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|_10\ =\ u.account_id;\l\
+|acc_ndx\ =\ get_account_index\ (_10);\l\
+|_11\ =\ (long\ unsigned\ int)\ acc_ndx;\l\
+|_12\ =\ (unsigned\ int)\ _11;\l\
+|_13\ =\ _12\ *\ 12;\l\
+|acc_offset\ =\ (int)\ _13;\l\
+|lock_account\ (acc_ndx,\ 1);\l\
+|sem_lock\ (4);\l\
+|_14\ =\ (long\ int)\ acc_offset;\l\
+|db_info.42_15\ =\ db_info;\l\
+|_16\ =\ db_info.42_15-\>account_fd;\l\
+|lseek\ (_16,\ _14,\ 0);\l\
+|db_info.43_17\ =\ db_info;\l\
+|_18\ =\ db_info.43_17-\>account_fd;\l\
+|read\ (_18,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|_19\ =\ a.number_of_users;\l\
+|if\ (_19\ \>\ 1)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_17_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|_20\ =\ a.number_of_users;\l\
+|_21\ =\ _20\ +\ -1;\l\
+|a.number_of_users\ =\ _21;\l\
+|sem_lock\ (4);\l\
+|_22\ =\ (long\ int)\ acc_offset;\l\
+|db_info.44_23\ =\ db_info;\l\
+|_24\ =\ db_info.44_23-\>account_fd;\l\
+|lseek\ (_24,\ _22,\ 0);\l\
+|db_info.45_25\ =\ db_info;\l\
+|_26\ =\ db_info.45_25-\>account_fd;\l\
+|write\ (_26,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_17_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|sem_lock\ (3);\l\
+|db_info.46_27\ =\ db_info;\l\
+|db_info.46_27-\>account_index[acc_ndx]\ =\ -1;\l\
+|sem_unlock\ (3);\l\
+}"];
+
+	fn_17_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|lock_account\ (acc_ndx,\ -1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|D.4121\ =\ 0;\l\
+}"];
+
+	fn_17_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|u\ =\ \{CLOBBER\};\l\
+|a\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_17_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|\<L6\>:\l\
+|return\ D.4121;\l\
+}"];
+
+	fn_17_basic_block_0:s -> fn_17_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_2:s -> fn_17_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_17_basic_block_2:s -> fn_17_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_17_basic_block_3:s -> fn_17_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_4:s -> fn_17_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_17_basic_block_4:s -> fn_17_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_17_basic_block_5:s -> fn_17_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_6:s -> fn_17_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_7:s -> fn_17_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_8:s -> fn_17_basic_block_9:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_17_basic_block_9:s -> fn_17_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_17_basic_block_0:s -> fn_17_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_get_balance" {
+	style="dashed";
+	color="black";
+	label="get_balance ()";
+	fn_18_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_18_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_18_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_account_index\ (account_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_18_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4129\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_18_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|lock_account\ (ndx,\ 0);\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 12;\l\
+|offset\ =\ (int)\ _3;\l\
+|sem_lock\ (4);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.47_5\ =\ db_info;\l\
+|_6\ =\ db_info.47_5-\>account_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.48_7\ =\ db_info;\l\
+|_8\ =\ db_info.48_7-\>account_fd;\l\
+|read\ (_8,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|lock_account\ (ndx,\ -1);\l\
+|_9\ =\ a.balance;\l\
+|D.4129\ =\ (int)\ _9;\l\
+}"];
+
+	fn_18_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|a\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_18_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L3\>:\l\
+|return\ D.4129;\l\
+}"];
+
+	fn_18_basic_block_0:s -> fn_18_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_18_basic_block_2:s -> fn_18_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_18_basic_block_2:s -> fn_18_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_18_basic_block_3:s -> fn_18_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_18_basic_block_4:s -> fn_18_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_18_basic_block_5:s -> fn_18_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_18_basic_block_6:s -> fn_18_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_18_basic_block_0:s -> fn_18_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_transaction" {
+	style="dashed";
+	color="black";
+	label="transaction ()";
+	fn_19_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_19_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_19_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_account_index\ (account_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_19_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4134\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_19_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|lock_account\ (ndx,\ 1);\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 12;\l\
+|offset\ =\ (int)\ _3;\l\
+|sem_lock\ (4);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.49_5\ =\ db_info;\l\
+|_6\ =\ db_info.49_5-\>account_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.50_7\ =\ db_info;\l\
+|_8\ =\ db_info.50_7-\>account_fd;\l\
+|read\ (_8,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|_9\ =\ a.balance;\l\
+|_10\ =\ amount\ +\ _9;\l\
+|if\ (_10\ \>\ 0.0)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+}"];
+
+	fn_19_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|_11\ =\ (double)\ amount;\l\
+|_12\ =\ a.balance;\l\
+|_13\ =\ (double)\ _12;\l\
+|printf\ (\"%f\ %f\\n\",\ _13,\ _11);\l\
+|_14\ =\ a.balance;\l\
+|_15\ =\ amount\ +\ _14;\l\
+|a.balance\ =\ _15;\l\
+|_16\ =\ a.balance;\l\
+|_17\ =\ (double)\ _16;\l\
+|printf\ (\"%f\\n\",\ _17);\l\
+|sem_lock\ (4);\l\
+|_18\ =\ (long\ int)\ offset;\l\
+|db_info.51_19\ =\ db_info;\l\
+|_20\ =\ db_info.51_19-\>account_fd;\l\
+|lseek\ (_20,\ _18,\ 0);\l\
+|db_info.52_21\ =\ db_info;\l\
+|_22\ =\ db_info.52_21-\>account_fd;\l\
+|write\ (_22,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|lock_account\ (ndx,\ -1);\l\
+|D.4134\ =\ 0;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_19_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|lock_account\ (ndx,\ -1);\l\
+|D.4134\ =\ -2;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+}"];
+
+	fn_19_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|a\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_19_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|\<L5\>:\l\
+|return\ D.4134;\l\
+}"];
+
+	fn_19_basic_block_0:s -> fn_19_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_19_basic_block_2:s -> fn_19_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_19_basic_block_2:s -> fn_19_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_19_basic_block_3:s -> fn_19_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_19_basic_block_4:s -> fn_19_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_19_basic_block_4:s -> fn_19_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_19_basic_block_5:s -> fn_19_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_19_basic_block_6:s -> fn_19_basic_block_7:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_19_basic_block_7:s -> fn_19_basic_block_8:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_19_basic_block_8:s -> fn_19_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_19_basic_block_0:s -> fn_19_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_check_password" {
+	style="dashed";
+	color="black";
+	label="check_password ()";
+	fn_20_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_20_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_20_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4141\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_user\ (ndx,\ 1);\l\
+|sem_lock\ (1);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.53_5\ =\ db_info;\l\
+|_6\ =\ db_info.53_5-\>user_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.54_7\ =\ db_info;\l\
+|_8\ =\ db_info.54_7-\>user_fd;\l\
+|read\ (_8,\ &u,\ 76);\l\
+|_9\ =\ strcmp\ (password,\ &u.password);\l\
+|if\ (_9\ ==\ 0)\l\
+\ \ goto\ \<bb\ 5\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 10\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|_10\ =\ u.online;\l\
+|if\ (_10\ ==\ 1)\l\
+\ \ goto\ \<bb\ 6\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 7\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|D.4141\ =\ 3;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_7 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 7\>:\l\
+|u.online\ =\ 1;\l\
+|_11\ =\ (long\ int)\ offset;\l\
+|db_info.55_12\ =\ db_info;\l\
+|_13\ =\ db_info.55_12-\>user_fd;\l\
+|lseek\ (_13,\ _11,\ 0);\l\
+|db_info.56_14\ =\ db_info;\l\
+|_15\ =\ db_info.56_14-\>user_fd;\l\
+|write\ (_15,\ &u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|_16\ =\ u.type;\l\
+|if\ (_16\ ==\ 65)\l\
+\ \ goto\ \<bb\ 8\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 9\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_8 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 8\>:\l\
+|D.4141\ =\ 2;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_9 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 9\>:\l\
+|D.4141\ =\ 1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 11\>;\ [INV]\l\
+}"];
+
+	fn_20_basic_block_10 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 10\>:\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|D.4141\ =\ 0;\l\
+}"];
+
+	fn_20_basic_block_11 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 11\>:\l\
+|u\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_20_basic_block_12 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 12\>:\l\
+|\<L9\>:\l\
+|return\ D.4141;\l\
+}"];
+
+	fn_20_basic_block_0:s -> fn_20_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_2:s -> fn_20_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_2:s -> fn_20_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_3:s -> fn_20_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_4:s -> fn_20_basic_block_5:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_4:s -> fn_20_basic_block_10:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_5:s -> fn_20_basic_block_6:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_5:s -> fn_20_basic_block_7:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_6:s -> fn_20_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_7:s -> fn_20_basic_block_8:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_7:s -> fn_20_basic_block_9:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_8:s -> fn_20_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_9:s -> fn_20_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_10:s -> fn_20_basic_block_11:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_11:s -> fn_20_basic_block_12:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_20_basic_block_12:s -> fn_20_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_20_basic_block_0:s -> fn_20_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_logout" {
+	style="dashed";
+	color="black";
+	label="logout ()";
+	fn_21_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_21_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_21_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_21_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4152\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_21_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_user\ (ndx,\ 1);\l\
+|sem_lock\ (1);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.57_5\ =\ db_info;\l\
+|_6\ =\ db_info.57_5-\>user_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.58_7\ =\ db_info;\l\
+|_8\ =\ db_info.58_7-\>user_fd;\l\
+|read\ (_8,\ &u,\ 76);\l\
+|u.online\ =\ 0;\l\
+|_9\ =\ (long\ int)\ offset;\l\
+|db_info.59_10\ =\ db_info;\l\
+|_11\ =\ db_info.59_10-\>user_fd;\l\
+|lseek\ (_11,\ _9,\ 0);\l\
+|db_info.60_12\ =\ db_info;\l\
+|_13\ =\ db_info.60_12-\>user_fd;\l\
+|write\ (_13,\ &u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|D.4152\ =\ 0;\l\
+}"];
+
+	fn_21_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|u\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_21_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L3\>:\l\
+|return\ D.4152;\l\
+}"];
+
+	fn_21_basic_block_0:s -> fn_21_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_21_basic_block_2:s -> fn_21_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_21_basic_block_2:s -> fn_21_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_21_basic_block_3:s -> fn_21_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_21_basic_block_4:s -> fn_21_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_21_basic_block_5:s -> fn_21_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_21_basic_block_6:s -> fn_21_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_21_basic_block_0:s -> fn_21_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_change_password" {
+	style="dashed";
+	color="black";
+	label="change_password ()";
+	fn_22_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_22_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_22_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_22_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4157\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+|u\ =\ \{CLOBBER\};\l\
+goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_22_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_user\ (ndx,\ 1);\l\
+|sem_lock\ (1);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.61_5\ =\ db_info;\l\
+|_6\ =\ db_info.61_5-\>user_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.62_7\ =\ db_info;\l\
+|_8\ =\ db_info.62_7-\>user_fd;\l\
+|read\ (_8,\ &u,\ 76);\l\
+|strcpy\ (&u.password,\ password);\l\
+|_9\ =\ (long\ int)\ offset;\l\
+|db_info.63_10\ =\ db_info;\l\
+|_11\ =\ db_info.63_10-\>user_fd;\l\
+|lseek\ (_11,\ _9,\ 0);\l\
+|db_info.64_12\ =\ db_info;\l\
+|_13\ =\ db_info.64_12-\>user_fd;\l\
+|write\ (_13,\ &u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|u\ =\ \{CLOBBER\};\l\
+|return;\l\
+}"];
+
+	fn_22_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|\<L4\>:\l\
+|return\ D.4157;\l\
+}"];
+
+	fn_22_basic_block_0:s -> fn_22_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_22_basic_block_2:s -> fn_22_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_22_basic_block_2:s -> fn_22_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_22_basic_block_3:s -> fn_22_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_22_basic_block_4:s -> fn_22_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_22_basic_block_5:s -> fn_22_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_22_basic_block_0:s -> fn_22_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_search" {
+	style="dashed";
+	color="black";
+	label="search ()";
+	fn_23_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_23_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_23_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|printf\ (\"%d\\n\",\ ndx);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_23_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4163\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_23_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_user\ (ndx,\ 0);\l\
+|sem_lock\ (1);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.65_5\ =\ db_info;\l\
+|_6\ =\ db_info.65_5-\>user_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.66_7\ =\ db_info;\l\
+|_8\ =\ db_info.66_7-\>user_fd;\l\
+|read\ (_8,\ u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|_9\ =\ u-\>account_id;\l\
+|acc_ndx\ =\ get_account_index\ (_9);\l\
+|_10\ =\ (long\ unsigned\ int)\ acc_ndx;\l\
+|_11\ =\ (unsigned\ int)\ _10;\l\
+|_12\ =\ _11\ *\ 12;\l\
+|offset\ =\ (int)\ _12;\l\
+|lock_account\ (acc_ndx,\ 1);\l\
+|sem_lock\ (4);\l\
+|_13\ =\ (long\ int)\ offset;\l\
+|db_info.67_14\ =\ db_info;\l\
+|_15\ =\ db_info.67_14-\>account_fd;\l\
+|lseek\ (_15,\ _13,\ 0);\l\
+|db_info.68_16\ =\ db_info;\l\
+|_17\ =\ db_info.68_16-\>account_fd;\l\
+|read\ (_17,\ a,\ 76);\l\
+|sem_unlock\ (4);\l\
+|D.4163\ =\ 0;\l\
+}"];
+
+	fn_23_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|\<L2\>:\l\
+|return\ D.4163;\l\
+}"];
+
+	fn_23_basic_block_0:s -> fn_23_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_23_basic_block_2:s -> fn_23_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_23_basic_block_2:s -> fn_23_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_23_basic_block_3:s -> fn_23_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_23_basic_block_4:s -> fn_23_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_23_basic_block_5:s -> fn_23_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_23_basic_block_0:s -> fn_23_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_get_account_id" {
+	style="dashed";
+	color="black";
+	label="get_account_id ()";
+	fn_24_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_24_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_24_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_user_index\ (user_id);\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 76;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_user\ (ndx,\ 0);\l\
+|sem_lock\ (1);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.69_5\ =\ db_info;\l\
+|_6\ =\ db_info.69_5-\>user_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.70_7\ =\ db_info;\l\
+|_8\ =\ db_info.70_7-\>user_fd;\l\
+|read\ (_8,\ &u,\ 76);\l\
+|sem_unlock\ (1);\l\
+|lock_user\ (ndx,\ -1);\l\
+|D.4165\ =\ u.account_id;\l\
+|u\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_24_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|\<L1\>:\l\
+|return\ D.4165;\l\
+}"];
+
+	fn_24_basic_block_0:s -> fn_24_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_24_basic_block_2:s -> fn_24_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_24_basic_block_3:s -> fn_24_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_24_basic_block_0:s -> fn_24_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_attach_new_user" {
+	style="dashed";
+	color="black";
+	label="attach_new_user ()";
+	fn_25_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_25_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_25_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|ndx\ =\ get_account_index\ (account_id);\l\
+|if\ (ndx\ ==\ -1)\l\
+\ \ goto\ \<bb\ 3\>;\ [INV]\l\
+else\l\
+\ \ goto\ \<bb\ 4\>;\ [INV]\l\
+}"];
+
+	fn_25_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|D.4170\ =\ -1;\l\
+|//\ predicted\ unlikely\ by\ early\ return\ (on\ trees)\ predictor.\l\
+goto\ \<bb\ 5\>;\ [INV]\l\
+}"];
+
+	fn_25_basic_block_4 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 4\>:\l\
+|_1\ =\ (long\ unsigned\ int)\ ndx;\l\
+|_2\ =\ (unsigned\ int)\ _1;\l\
+|_3\ =\ _2\ *\ 12;\l\
+|offset\ =\ (int)\ _3;\l\
+|lock_account\ (ndx,\ 1);\l\
+|sem_lock\ (4);\l\
+|_4\ =\ (long\ int)\ offset;\l\
+|db_info.71_5\ =\ db_info;\l\
+|_6\ =\ db_info.71_5-\>account_fd;\l\
+|lseek\ (_6,\ _4,\ 0);\l\
+|db_info.72_7\ =\ db_info;\l\
+|_8\ =\ db_info.72_7-\>account_fd;\l\
+|read\ (_8,\ &a,\ 12);\l\
+|_9\ =\ a.number_of_users;\l\
+|_10\ =\ _9\ +\ 1;\l\
+|a.number_of_users\ =\ _10;\l\
+|_11\ =\ (long\ int)\ offset;\l\
+|db_info.73_12\ =\ db_info;\l\
+|_13\ =\ db_info.73_12-\>account_fd;\l\
+|lseek\ (_13,\ _11,\ 0);\l\
+|db_info.74_14\ =\ db_info;\l\
+|_15\ =\ db_info.74_14-\>account_fd;\l\
+|write\ (_15,\ &a,\ 12);\l\
+|sem_unlock\ (4);\l\
+|lock_account\ (ndx,\ -1);\l\
+|D.4170\ =\ 0;\l\
+}"];
+
+	fn_25_basic_block_5 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 5\>:\l\
+|a\ =\ \{CLOBBER\};\l\
+}"];
+
+	fn_25_basic_block_6 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 6\>:\l\
+|\<L3\>:\l\
+|return\ D.4170;\l\
+}"];
+
+	fn_25_basic_block_0:s -> fn_25_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_25_basic_block_2:s -> fn_25_basic_block_3:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_25_basic_block_2:s -> fn_25_basic_block_4:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_25_basic_block_3:s -> fn_25_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_25_basic_block_4:s -> fn_25_basic_block_5:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_25_basic_block_5:s -> fn_25_basic_block_6:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_25_basic_block_6:s -> fn_25_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_25_basic_block_0:s -> fn_25_basic_block_1:n [style="invis",constraint=true];
+}
+subgraph "cluster_main" {
+	style="dashed";
+	color="black";
+	label="main ()";
+	fn_26_basic_block_0 [shape=Mdiamond,style=filled,fillcolor=white,label="ENTRY"];
+
+	fn_26_basic_block_1 [shape=Mdiamond,style=filled,fillcolor=white,label="EXIT"];
+
+	fn_26_basic_block_2 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 2\>:\l\
+|create_database\ ();\l\
+|u\ =\ \{\};\l\
+|u.user_id\ =\ 3;\l\
+|u.name\ =\ \"Jim\";\l\
+|u.password\ =\ \"qewy\";\l\
+|u.account_id\ =\ 2;\l\
+|a.account_id\ =\ 2;\l\
+|a.balance\ =\ 1.2e+4;\l\
+|a.number_of_users\ =\ 1;\l\
+|_1\ =\ u1.user_id;\l\
+|printf\ (\"%d\\n\",\ _1);\l\
+|load_database\ ();\l\
+|insert_user\ (&u);\l\
+|insert_account\ (&a);\l\
+|search\ (3,\ &u1,\ &a1);\l\
+|transaction\ (2,\ -2.3e+4);\l\
+|change_password\ (3,\ \"bleh\");\l\
+|b\ =\ check_password\ (3,\ \"bleh\");\l\
+|close_database\ ();\l\
+|u\ =\ \{CLOBBER\};\l\
+|a\ =\ \{CLOBBER\};\l\
+|u1\ =\ \{CLOBBER\};\l\
+|a1\ =\ \{CLOBBER\};\l\
+|D.4173\ =\ 0;\l\
+}"];
+
+	fn_26_basic_block_3 [shape=record,style=filled,fillcolor=lightgrey,label="{\<bb\ 3\>:\l\
+|\<L0\>:\l\
+|return\ D.4173;\l\
+}"];
+
+	fn_26_basic_block_0:s -> fn_26_basic_block_2:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_26_basic_block_2:s -> fn_26_basic_block_3:n [style="solid,bold",color=blue,weight=100,constraint=true];
+	fn_26_basic_block_3:s -> fn_26_basic_block_1:n [style="solid,bold",color=black,weight=10,constraint=true];
+	fn_26_basic_block_0:s -> fn_26_basic_block_1:n [style="invis",constraint=true];
+}
+}

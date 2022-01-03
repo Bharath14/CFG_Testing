@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-gcc-9 -g  -rdynamic CMakeFiles/lock_account_testcase2.dir/lock_account_testcase2.c.o CMakeFiles/lock_account_testcase2.dir/database.c.o  -o lock_account_testcase2 

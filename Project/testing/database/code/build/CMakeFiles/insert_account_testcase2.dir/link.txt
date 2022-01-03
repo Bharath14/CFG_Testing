@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-gcc-9 -g  -rdynamic CMakeFiles/insert_account_testcase2.dir/insert_account_testcase2.c.o CMakeFiles/insert_account_testcase2.dir/database.c.o  -o insert_account_testcase2 

@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ellanti/Desktop/ST/Project/src/server/database.c
+fcntl.h
+-
+unistd.h
+-
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+sys/stat.h
+-
+sys/sem.h
+-
+sys/shm.h
+-
+sys/ipc.h
+-
+CUnit/CUnit.h
+-
+database.h
+/home/ellanti/Desktop/ST/Project/src/server/database.h
+
+/home/ellanti/Desktop/ST/Project/src/server/database.h
+
+/home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase3.c
+database.h
+/home/ellanti/Desktop/ST/Project/src/server/database.h
+

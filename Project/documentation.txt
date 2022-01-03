@@ -1,0 +1,249 @@
+Documentation for bank management system
+
+The bank management system has 2 main entity types. User and Account(Bank account).
+User can be an admin or regular user(customer).
+Only regular users can have a bank account.
+A regular user can have only 1 associated account.
+An account can have multiple associated users.(Shared account)
+
+The features in this program are:
+1) login
+2) Menu for admin:
+	a)add user(can add a new account with it or attach to existing account)
+	b)search for user(can make a transaction on that user)
+	c)change own password
+	d)add admin
+3) Menu for regular user:
+	a)balance enquiry
+	b)deposit
+	c)withdraw
+	d)change own password
+	e)view all details
+
+
+The system has 3 C files.
+Database.c for file management with critical section protection.
+Server.c for server program.
+Client.c for client program.
+
+The server and client program work hand in hand using socket programming.
+THe server can support multiple clients at the same time.
+The server calls functions from the database whenever required.
+
+____________________________________________________________________________________________________________________________________________
+DATABASE FUNCTION DOCUMENTATION
+
+1) creates the files for database. One admin is created
+
+2) load database loads the database handles into shared memory. Initializes semaphores.
+
+3) close database closes all files.
+
+4) sem_lock , sem_unlock is used to lock and unlock semaphores.
+
+5) insert_user adds the given user into the database. 
+returns user id on success.
+returns -1 on failure(max number of users reached).
+
+6) insert_account adds the given account into the database.
+returns 0 on sucess.
+returns -1 on failure(amx number of accounts reached).
+
+7) get_account_index takes an account ID and returns the index of the account in the DB.
+returns -1 if account not found.
+
+8) get_user_index takes an user ID and returns the index of the user in the DB.
+returns -1 if user not found.
+
+9) lock_account takes an index and lock type and performs a lock operation on an account.
+lock types are ints:
+0 : read lock
+1 : write lock
+2 : unlock
+
+10) lock_user takes an index and lock type and performs a lock operation on a user.
+lock types are ints:
+0 : read lock
+1 : write lock
+2 : unlock
+
+11) delete_user takes a user id and deletes it from the database. Also deletes attached accounts if the deleted user is the only attached user.
+
+returns 0 on success.
+returns -1 if account not found.
+
+
+12) get_balance takes an account_id and returns its balance.
+
+returns -1 if account not found.
+
+13) transaction takes an account_id and a signed float amount. 
+Makes the transaction on the account. 
+
+returns 0 on success.
+returns -1 if account not found.
+returns -2 if transaction will cause negative balance. In this case, transaction is not completed.
+
+14) check_password takes a user_id and password.
+
+returns -1 if user not found.
+returns 3 if user is already online.
+returns 2 if user is offline and is an admin.
+returns 1 if user is offline and a regular user.
+
+if user is offline, they are also marked as online.
+
+returns 0 if password is wrong.
+
+15)logout takes a user_id and marks them as offline.
+
+returns 0 on success.
+returns -1 if user is not found.
+
+16) change_password takes a user_id and a new password. It updates the password of the user.
+
+returns 0 on success.
+returns -1 if user not found. 
+
+17) search(int user_id, user * u, account * a)
+
+searches for user. *u is set the the found user and *a is set to the attached account.
+
+returns 0 on success.
+returns -1 if user not found.
+
+18) get_account_id(int user_id)
+
+returns the account_id attached to user_id.
+
+19) attach_new_user(int account_id)
+
+increments the number of users attached to account.
+
+returns 0 on success.
+returns -1 if account not found.
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+SERVER
+ 
+In all functions sd is the socket descriptor for the connection. It can be set to any IO stream.
+
+Functions:
+
+1)login(int sd, int *type)
+
+an infinite loop that waits for correct password.
+
+If user_id is -1, it breaks out of the loop
+If user is already online, if breaks out of the loop
+
+returns user_id on sucessful login. *type is set to the user type(1 regular user, 2 admin)
+
+2) customer_interface(int sd, int user_id)
+
+Loop to cater to regular user actions. 
+choice can be from 1 to 6:
+
+1 : gets balance
+2,3 : transactions
+4 : password change
+5 : view details
+6 : log out and exit loop
+
+
+3) int create_user(int sd)
+
+creates new user.
+There is choice of adding a new account for the user or attaching an existing account.
+Account attaching process keeps repeating until a valid account is found.
+
+4) int add_admin(int sd)
+
+adds new admin
+
+5) int delete_user_server(int sd)
+
+deletes user.
+
+6) int search_user(int sd)
+
+searches for user. Then an option is given to make a transaction for that user. (to be used by admin)
+
+7) admin_interface(int sd, int user_id)
+
+Loop to cater to admin user actions. 
+choice can be from 1 to 6:
+
+1 : create user
+2 : remove user
+3 : search for user and have a choice of making a transaction
+4 : change password
+5 : add admin
+6 : log out and exit loop
+
+
+______________________________________________________________________________________________________________________
+
+Client
+
+1) login()
+
+login loop
+returns user type as int on successful login
+handles wrong id, password or if user is already online from another terminal
+
+2)balance_enquiry()
+
+balance enquiry for user
+
+3)deposit()
+
+depsit money for user
+
+4)withdraw()
+
+withdraw money for user
+handles case when withdraw amount exceeds account amount
+
+5)change_password()
+
+change password for both user and admin.
+
+6)view_detatils()
+
+view account details
+
+7)menu_loop()
+
+menu loop for regular users
+
+8)add_user()
+
+for admin to add new users.
+Can make a new account or attach to existing account.
+If they want to attach to existing account, it loops till a valid account is chosen.
+
+9) delete_user()
+
+for admin to delete a user.
+
+10)add_admin()
+
+for admin to add a new admin
+
+11)search_user()
+
+for admin to search for user.
+can make a transaction on this user.
+
+12)admin_menu_loop()
+
+menu loop for admin
+
+13) main()
+
+connects to server and calls login and appropriate menu loop.
+

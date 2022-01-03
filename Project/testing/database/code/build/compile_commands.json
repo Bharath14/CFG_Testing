@@ -1,0 +1,217 @@
+[
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase2.dir/delete_user_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase5.dir/check_password_testcase5.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/check_password_testcase5.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/check_password_testcase5.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase5.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase4.dir/check_password_testcase4.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/check_password_testcase4.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/check_password_testcase4.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase4.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase3.dir/check_password_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/check_password_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/check_password_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase2.dir/check_password_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/check_password_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/check_password_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase3.dir/transaction_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/transaction_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/transaction_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase1.dir/transaction_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/transaction_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/transaction_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase2.dir/transaction_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/transaction_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/transaction_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/transaction_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase3.dir/lock_account_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase2.dir/lock_account_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase1.dir/lock_account_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase3.dir/get_account_index_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase3.dir/insert_account_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase2.dir/insert_account_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase1.dir/delete_user_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase1.dir/insert_account_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/insert_account_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/insert_account_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase2.dir/get_account_index_testcase2.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase2.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase2.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase2.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase1.dir/check_password_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/check_password_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/check_password_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/check_password_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase4.dir/lock_account_testcase4.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase4.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/lock_account_testcase4.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/lock_account_testcase4.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase1.dir/get_account_index_testcase1.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase1.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/get_account_index_testcase1.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/get_account_index_testcase1.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase3.dir/delete_user_testcase3.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase3.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/delete_user_testcase3.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/delete_user_testcase3.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+},
+{
+  "directory": "/home/ellanti/Desktop/ST/Project/src/server/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/Database_testing.dir/database.c.o   -c /home/ellanti/Desktop/ST/Project/src/server/database.c",
+  "file": "/home/ellanti/Desktop/ST/Project/src/server/database.c"
+}
+]
